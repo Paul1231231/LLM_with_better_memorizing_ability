@@ -21,23 +21,20 @@ Key contributions:
 ---
 
 ## 🛠 Features
-- **Context Cropping Engine**: Selectively retains useful information (code, parameters, hardware details) while discarding redundant explanations.  
-- **LLM-as-a-Judge Evaluation**: Uses Deepseek v3.1 and Amazon Bedrock safeguard models for robust scoring.  
-- **Custom Metrics**:  
-  - *Memorizing Ability* – ensures chatbot recalls prior turns accurately.  
-  - *Code Cohesion* – enforces minimal edits and consistency with user-provided code.  
-- **Dataset Integration**: MT-Bench (80 test cases) + NextCoder-Conversational (100 coding samples).  
+- **Advantage of cropping**
+-   - Selectively retains useful information (code, parameters, hardware details)
+    - Discarding redundant explanations.
+    - Logical discontinous may slightly enhance the memorizing ability
+
 
 ---
 
 ## 📂 Project Structure
 ```
-├── data/                # MT-Bench & NextCoder subsets
 ├── src/                 # Core chatbot and suppression methods
 │   ├── cropping/        # Cropping-based suppression logic
 │   ├── summarizing/     # Baseline summarization approach
 │   ├── evaluation/      # Metrics & LLM-as-a-judge scripts
-│   └── security/        # Secure coding utilities
 ├── experiments/         # Results, tables, and figures
 ├── docs/                # Final report and notes
 └── README.md            # Project overview
@@ -49,9 +46,8 @@ Key contributions:
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/paul-li/context-rot-copilot.git
-cd context-rot-copilot
-pip install -r requirements.txt
+git clone https://github.com/Paul1231231/LLM_with_better_memorizing_ability.git
+cd LLM_with_better_memorizing_ability
 ```
 
 ---
@@ -59,12 +55,12 @@ pip install -r requirements.txt
 ## 🚀 Usage
 Run chatbot with cropping suppression:
 ```bash
-python src/cropping/run_chatbot.py --dataset mtbench
+python src/cropping/chatbot.py 
 ```
 
 Run baseline summarization chatbot:
 ```bash
-python src/summarizing/run_chatbot.py --dataset nextcoder
+python src/summarizing/chatbot.py 
 ```
 
 Evaluate with custom metrics:
@@ -92,13 +88,6 @@ This project is licensed under the MIT License. See `LICENSE` for details.
 
 ---
 
-## 🙌 Acknowledgments
-- Supervisors and mentors at CUHK  
-- Hong Kong Applied Science and Technology Research Institute (ASTRI) internship team  
-- Open-source contributors in context engineering and LLM evaluation  
-
----
-
 Got it — let’s add a **KV cache defense section** to your README so that anyone reviewing your repo understands the design trade-offs clearly. Here’s a suggested addition:
 
 ---
@@ -117,7 +106,7 @@ our cropping-based chatbot maintains the cache as:
 System Prompt > Crop Message 1 > Crop Message 2 > ...
 ```
 
-This means the cropped message is re‑fed into the cache each time, slightly increasing the token input compared to a summarization approach.  
+This means the cropped message is re‑fed into the cache each time, slightly increasing the token input compared to a traditional chatbot.  
 
 ### Why this is acceptable:
 - **Alignment with modern LLM usage**: Long chains of thought and reasoning tokens are already common in advanced LLM workflows. Higher token input is becoming the norm.  
