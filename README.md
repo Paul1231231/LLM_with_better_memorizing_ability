@@ -31,13 +31,17 @@ Key contributions:
 
 ## 📂 Project Structure
 ```
-├── src/                 # Core chatbot and suppression methods
-│   ├── cropping/        # Cropping-based suppression logic
-│   ├── summarizing/     # Baseline summarization approach
-│   ├── evaluation/      # Metrics & LLM-as-a-judge scripts
-├── experiments/         # Results, tables, and figures
-├── docs/                # Final report and notes
-└── README.md            # Project overview
+├── src/                   # Core chatbot and suppression methods
+│   ├── cropping/          # Cropping-based suppression logic
+│   │   ├──chatbot.py      # Cropping-based chatbot in terminal
+│   │   ├──chatbot_code.py # Generate conversation in json format for evaluation
+│   ├── evaluation/        # Metrics & LLM-as-a-judge scripts
+│   │   ├──eval_json.py    # Evaluate chatbot performance using deepeval
+│   ├── summarizing/       # Baseline summarization approach
+│   │   ├──chatbot.py      # Summarizing-based chatbot in terminal 
+│   │   ├──chatbot_code.py # Generate conversation in json format for evaluation (As a baseline)
+├── docs/                  # Final report and notes
+└── README.md              # Project overview
 ```
 
 ---
